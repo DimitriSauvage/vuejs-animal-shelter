@@ -1,23 +1,31 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-
+import EditAnimal from "../views/EditAnimal.vue";
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home
+    name: "AnimalList",
+    path: "/animals",
+    redirect: "/",
+    children: [
+      {
+        name: "AnimalEdition",
+        path: ":id",
+        component: EditAnimal
+      }
+    ]
   },
   {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+    name: "Home",
+    path: "/",
+    component: Home
+  },
+  //Let this route at last position for redirection
+  {
+    path: "*",
+    redirect: "/"
   }
 ];
 

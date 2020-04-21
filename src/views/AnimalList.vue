@@ -1,5 +1,5 @@
 <template>
-    <div id="pet-list">   
+    <div id="animal-list">   
         <div class="d-flex justify-content-around pb-2 mb-2 border-bottom border-light">
             <div class="form-group">
                 <label for="fName">Nom</label>
@@ -22,28 +22,22 @@
                 <input class="form-control" type="text" name="fSituation" id="fSituation" v-model="fSituation">    
             </div>
         </div>
-        <Pet v-for="pet in filteredPets" :pet="pet" :key="pet.name"></pet>
+        <Animal v-for="animal in filteredAnimals" :animal="animal" :key="animal.name"></Animal>
     </div>
 </template>
 
 <script>
-import Pet from '@/components/Pet.vue';
+import Animal from '@/components/Animal.vue';
 
 
 
 export default {
-    name : 'pet-list',
+    name : 'animal-list',
     components: {
-        Pet
+        Animal
     },
     data : function () {
         return {
-            pets :  [
-                    { name: 'Tom', spacies: 'Chat', gender: 'male', age: 10, situation: "abandoned"},
-                    { name: 'Jerry', spacies: 'Sourie', gender: 'femelle', age: 15, situation: "abandoned"},
-                    { name: 'Jack', spacies: 'Moineaux', gender: 'male', age: 5, situation: "abandoned"},
-                    { name: 'Sparrow', spacies: 'Chat', gender: 'femelle', age: 5, situation: "abandoned"},
-            ],
             fName: "",
             fSpacies: "",
             fGender: "",
@@ -52,8 +46,8 @@ export default {
         }
     },
     computed: {
-        filteredPets: function () {
-            return this.pets.filter((p) => 
+        filteredAnimals: function () {
+            return this.animals.filter((p) => 
             p.name.toLowerCase().includes(this.fName.toLowerCase()) &&
             p.spacies.toLowerCase().includes(this.fSpacies.toLowerCase()) &&
             p.gender.toLowerCase().includes(this.fGender.toLowerCase()) &&
@@ -67,7 +61,7 @@ export default {
 
 <style>
 
-    #pet-list{
+    #animal-list{
         width: 80%;
         margin: 0 auto;
     }

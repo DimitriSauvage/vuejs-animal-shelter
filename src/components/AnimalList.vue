@@ -30,11 +30,15 @@
 <script>
 export default {
   name: "AnimalList",
-  props: ["animals"],
   methods: {
     editAnimal: function() {
       this.$router.push({ name: "EditAnimal" });
     }
+  },
+  computed: {
+    animals() {
+      return this.$store.state.animals
+    } 
   }
 };
 </script>

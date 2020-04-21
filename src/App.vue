@@ -1,19 +1,31 @@
 <template>
   <div id="app">
-    <router-view :animals="animals" />
+    <div id="nav">
+      <router-link to="/">Liste d'animaux</router-link> 
+    </div>
+    <router-view/>
   </div>
 </template>
 
-<script>
-import animals from "./values/Animals";
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
 
-export default {
-  data: function() {
-    return {
-      animals: animals
-    };
-  }
-};
-</script>
+#nav {
+  padding: 30px;
+}
 
-<style lang="scss"></style>
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
+}
+</style>

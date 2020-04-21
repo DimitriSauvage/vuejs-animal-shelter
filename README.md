@@ -1,4 +1,4 @@
-# vuejs-refuge
+# refuge
 
 ## Project setup
 ```

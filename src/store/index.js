@@ -8,8 +8,6 @@ import {
   ADD_PRESCRIPTION,
   UPDATE_PRESCRIPTION,
   SAVE_PRESCRIPTION,
-  ADOPT_ANIMAL,
-  UNADOPT_ANIMAL,
 } from "./constants";
 
 Vue.use(Vuex);
@@ -51,7 +49,7 @@ export default new Vuex.Store({
         situation: "abandoned",
       },
     ],
-    adopted: []
+    adopted: [],
   },
   mutations: {
     /**
@@ -140,15 +138,6 @@ export default new Vuex.Store({
         this.commit(creation ? ADD_PRESCRIPTION : UPDATE_PRESCRIPTION, payload);
       }
     },
-    [ADOPT_ANIMAL] : function(state, animal) {
-      state.adopted.push(animal);
-    },
-    [UNADOPT_ANIMAL] : function(state, animal) {
-      const index = state.adopted.findIndex(x => x.id === animal.id);
-      if (index >= 0) {
-        state.adopted.splice(index, 1);
-      }
-    }
   },
   actions: {},
   modules: {},

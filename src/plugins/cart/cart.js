@@ -5,6 +5,7 @@ const defaultTemplate = `
 
 const Cart = {
   install(Vue, options) {
+    console.log("Install");
     //Define the cart
     Vue.prototype.$cart = {
       //Elements in the cart
@@ -41,7 +42,7 @@ const Cart = {
        * Add or remove an element
        * @param {*} element Element to handle
        */
-      togleElement: function(element) {
+      toggle: function(element) {
         this.$cart.contains(element)
           ? this.$cart.remove(element)
           : this.$cart.add(element);

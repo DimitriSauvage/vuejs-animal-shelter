@@ -1,6 +1,7 @@
 <template>
   <div class="w-100">
-    <v-btn fab elevation="12" rounded right>{{adoptedAnimals.length}}</v-btn>
+    <Cart></Cart>
+    <!-- <v-btn fab elevation="12" rounded right>{{adoptedCount()}}</v-btn> -->
     <div class="mx-3">
       <div class="d-flex justify-content-start">
         <button class="btn btn-primary mb-1" @click="addAnimal">Ajouter</button>
@@ -25,15 +26,16 @@
 
 <script>
 import AnimalListItem from "../components/AnimalListItem";
+import adopt from "../mixins/adopt";
 
 export default {
+  mixins: [adopt],
   name: "AnimalList",
   computed: {
     animals() {
+      console.log(this);
+      
       return this.$store.state.animals;
-    },
-    adoptedAnimals() {
-      return this.$store.state.adopted;
     }
   },
   methods: {

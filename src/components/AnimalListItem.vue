@@ -14,10 +14,10 @@
     </td>
     <td>
       <div class="d-flex justify-content-center align-items-center">
-        <span v-if="!animal.adopted">Trop tard !</span>
-        <button v-else class="btn btn-link" @click="adopt(animal)">
-          <i class="fas fa-heart"></i>
-        </button>
+        <!--Unadopt-->
+        <v-btn primary icon class="btn btn-link" @click="toogleAdopt(animal)">
+          <v-icon>{{isAdopted ? "mdi-heart-broken" : "mdi-heart"}}</v-icon>
+        </v-btn>
       </div>
     </td>
   </tr>
@@ -33,6 +33,14 @@ export default {
   methods: {
     editAnimal: function() {
       this.$router.push({ path: `/animals/edit/${this.animal.id}` });
+    }
+  },
+  computed: {
+    isAdopted: function() {
+      const adopted =
+        this.$store.state.adopted &&
+        this.$store.state.adopted.findIndex(x => x.id == this.animal.id) >= 0;
+      return adopted;
     }
   }
 };

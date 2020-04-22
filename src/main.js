@@ -13,6 +13,7 @@ const vue = new Vue({
   router,
   store,
   vuetify,
+  Cart,
   render: (h) => h(App),
 }).$mount("#app");
 

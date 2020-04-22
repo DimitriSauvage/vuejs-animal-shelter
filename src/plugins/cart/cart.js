@@ -14,21 +14,21 @@ const Cart = {
        * Get the elements in the cart
        */
       getAll: function() {
-        return this.$cart.__elements;
+        return this.__elements;
       },
       /**
        * Add an element to the cart
        * @param {*} element Element to add
        */
       add: function(element) {
-        if (!this.$cart.contains(element)) {
-          this.$cart.__elements.push(element);
+        if (!this.contains(element)) {
+          this.__elements.push(element);
         }
       },
       remove: function(element) {
-        const index = this.$cart.__elements.indexOf(element);
+        const index = this.__elements.indexOf(element);
         if (index >= 0) {
-          this.$cart.__elements.splice(index, 1);
+          this.__elements.splice(index, 1);
         }
       },
       /**
@@ -36,22 +36,22 @@ const Cart = {
        * @param {*} element Element to check
        */
       contains: function(element) {
-        return this.$cart.__elements.includes(element);
+        return this.__elements.includes(element);
       },
       /**
        * Add or remove an element
        * @param {*} element Element to handle
        */
       toggle: function(element) {
-        this.$cart.contains(element)
-          ? this.$cart.remove(element)
-          : this.$cart.add(element);
+        this.contains(element)
+          ? this.remove(element)
+          : this.add(element);
       },
       /**
        * Get the cart length
        */
       length: function() {
-        return this.$cart.__elements.length;
+        return this.__elements.length;
       },
     };
 
